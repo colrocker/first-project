@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://dxjijxdhib7s7" path="res://character_body_2d.gd" id="3_epypp"]
 [ext_resource type="Texture2D" uid="uid://bkge8fx1elk32" path="res://ball.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dtnes4m00sp7" path="res://simple cube.png" id="4_0hol4"]
-[ext_resource type="Script" uid="uid://bs5ea60ke8ueb" path="res://collision_shape_2d.gd" id="6_kdubu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1651, 381)
@@ -22,8 +21,8 @@ size = Vector2(125, 117)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(66, 88.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51bqv"]
-size = Vector2(237, 206.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkm1"]
+size = Vector2(195.75, 191.25)
 
 [node name="Node2D" type="Node2D" unique_id=1247605548]
 
@@ -100,28 +99,19 @@ position = Vector2(139, 295)
 shape = SubResource("RectangleShape2D_q6r6c")
 debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
 
-[node name="DropOffZone" type="RigidBody2D" parent="." unique_id=2088546346]
-disable_mode = 1
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-freeze = true
+[node name="DropOfArea" type="Area2D" parent="." unique_id=286335305 groups=["DropOff"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropOffZone" unique_id=1099086314]
-position = Vector2(1370, 312)
-shape = SubResource("RectangleShape2D_51bqv")
-disabled = true
-script = ExtResource("6_kdubu")
+[node name="DropZone" type="CollisionShape2D" parent="DropOfArea" unique_id=2070262410]
+position = Vector2(763, 319)
+shape = SubResource("RectangleShape2D_cpkm1")
 
-[node name="Icon" type="Sprite2D" parent="DropOffZone/CollisionShape2D" unique_id=1789964163]
-modulate = Color(0.41568628, 0.9490196, 0.3647059, 1)
-show_behind_parent = true
-light_mask = 2
-visibility_layer = 2
+[node name="Sprite2D" type="Sprite2D" parent="DropOfArea/DropZone" unique_id=1900155642]
+modulate = Color(0.32275242, 0.72831035, 0.34368736, 1)
 z_index = -1
-position = Vector2(-0.99999976, -9.536743e-07)
-scale = Vector2(1.8164065, 1.5351563)
+position = Vector2(3.874986, 0.6250019)
+scale = Vector2(1.5312498, 1.4296875)
 texture = ExtResource("1_wtcfe")
 
 [connection signal="body_entered" from="character/Area2D" to="character" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="character/Area2D" to="character" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="DropOfArea" to="moveable cube" method="_on_drop_of_area_body_entered"]
