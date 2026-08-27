@@ -5,9 +5,10 @@
 [ext_resource type="Script" uid="uid://dxjijxdhib7s7" path="res://character_body_2d.gd" id="3_epypp"]
 [ext_resource type="Texture2D" uid="uid://bkge8fx1elk32" path="res://ball.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dtnes4m00sp7" path="res://simple cube.png" id="4_0hol4"]
+[ext_resource type="Script" uid="uid://bs5ea60ke8ueb" path="res://collision_shape_2d.gd" id="6_kdubu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
-size = Vector2(1125, 164)
+size = Vector2(1651, 381)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(180, 139.5)
@@ -21,6 +22,9 @@ size = Vector2(125, 117)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(66, 88.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51bqv"]
+size = Vector2(237, 206.5)
+
 [node name="Node2D" type="Node2D" unique_id=1247605548]
 
 [node name="platform" type="RigidBody2D" parent="." unique_id=1345009822]
@@ -31,12 +35,12 @@ gravity_scale = 0.0
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform" unique_id=283777568]
-position = Vector2(583.5, 513)
+position = Vector2(846.5, 621.5)
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Icon" type="Sprite2D" parent="platform" unique_id=328239255]
-position = Vector2(582, 516.5)
-scale = Vector2(8.734376, 1.1328125)
+position = Vector2(844.99994, 624)
+scale = Vector2(12.84375, 2.8125)
 texture = ExtResource("1_wtcfe")
 
 [node name="moveable cube" type="RigidBody2D" parent="." unique_id=670896667 groups=["Rigidbody"]]
@@ -80,6 +84,8 @@ position = Vector2(142, 273)
 shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="character" unique_id=1649166033]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(141, 273.5)
 scale = Vector2(4.0625, 3.9062502)
 texture = ExtResource("4_0hol4")
@@ -93,6 +99,29 @@ input_pickable = false
 position = Vector2(139, 295)
 shape = SubResource("RectangleShape2D_q6r6c")
 debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
+
+[node name="DropOffZone" type="RigidBody2D" parent="." unique_id=2088546346]
+disable_mode = 1
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropOffZone" unique_id=1099086314]
+position = Vector2(1370, 312)
+shape = SubResource("RectangleShape2D_51bqv")
+disabled = true
+script = ExtResource("6_kdubu")
+
+[node name="Icon" type="Sprite2D" parent="DropOffZone/CollisionShape2D" unique_id=1789964163]
+modulate = Color(0.41568628, 0.9490196, 0.3647059, 1)
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+position = Vector2(-0.99999976, -9.536743e-07)
+scale = Vector2(1.8164065, 1.5351563)
+texture = ExtResource("1_wtcfe")
 
 [connection signal="body_entered" from="character/Area2D" to="character" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="character/Area2D" to="character" method="_on_area_2d_body_exited"]
