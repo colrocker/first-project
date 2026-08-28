@@ -12,7 +12,11 @@ func _process(delta: float) -> void:
 
 
 
-
 func _on_drop_of_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("DropOff"):
-		print("dropped")
+	if (body.name == "moveable cube"):
+		print ("enterd")
+
+
+func _on_drop_of_area_body_exited(body: Node2D) -> void:
+	if (body.name == "moveable cube"):
+		print ("left")

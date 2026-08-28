@@ -1,10 +1,10 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1787844954
+::res://::1787924648
 ball.png::CompressedTexture2D::3100997485102074515::1787834254::1787834298::1::::<><><>0<>0<>06869e7af09f8d6973e23c4117d21ecb<>res://.godot/imported/ball.png-9a4ca347acb7532f6ae347744a6b04f7.ctex::
 Basketball-ball-isolated-on-transparent-background-PNG.png::CompressedTexture2D::3065780908129747605::1787834254::1787834298::1::::<><><>0<>0<>219d89c0a879cd64a612902958fdc98d<>res://.godot/imported/Basketball-ball-isolated-on-transparent-background-PNG.png-e8aea3d3a3d7bf21a90d763eda8ea6d6.ctex::
 character_body_2d.gd::GDScript::8792687875628143916::1787834254::0::1::::<>CharacterBody2D<><>0<>0<><>::
 collision_shape_2d.gd::GDScript::3711995737075527841::1787835309::0::1::::<>CollisionShape2D<><>0<>0<><>::
 icon.svg::CompressedTexture2D::3192080940502063234::1787834254::1787834298::1::::<><><>0<>0<>b1213b42068fe2e9288de0b591db153f<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-node_2d.tscn::PackedScene::7228441224135277532::1787835320::0::1::::<><><>0<>0<><>::uid://dwnm1wjyj7qdd::::res://rigid_body_2d.gd<>uid://blqjdvmtnj2io::::res://icon.svg<>uid://dxjijxdhib7s7::::res://character_body_2d.gd<>uid://bkge8fx1elk32::::res://ball.png<>uid://dtnes4m00sp7::::res://simple cube.png<>uid://bs5ea60ke8ueb::::res://collision_shape_2d.gd
-rigid_body_2d.gd::GDScript::8731029726994214009::1787834254::0::1::::<>RigidBody2D<><>0<>0<><>::
+node_2d.tscn::PackedScene::7228441224135277532::1787846795::0::1::::<><><>0<>0<><>::uid://dwnm1wjyj7qdd::::res://rigid_body_2d.gd<>uid://blqjdvmtnj2io::::res://icon.svg<>uid://dxjijxdhib7s7::::res://character_body_2d.gd<>uid://bkge8fx1elk32::::res://ball.png<>uid://dtnes4m00sp7::::res://simple cube.png
+rigid_body_2d.gd::GDScript::8731029726994214009::1787846156::0::1::::<>RigidBody2D<><>0<>0<><>::
 simple cube.png::CompressedTexture2D::250587163122084606::1787834254::1787834298::1::::<><><>0<>0<>71a63cb2c43b548f687516ecd08b1738<>res://.godot/imported/simple cube.png-bab6f0e14833e510d6ead3ccb7b311e0.ctex::

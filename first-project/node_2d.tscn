@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dxjijxdhib7s7" path="res://character_body_2d.gd" id="3_epypp"]
 [ext_resource type="Texture2D" uid="uid://bkge8fx1elk32" path="res://ball.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dtnes4m00sp7" path="res://simple cube.png" id="4_0hol4"]
+[ext_resource type="Script" uid="uid://dh5nkon41obrg" path="res://drop_of_area.gd" id="6_kdubu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1651, 381)
@@ -22,7 +23,7 @@ size = Vector2(125, 117)
 size = Vector2(66, 88.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkm1"]
-size = Vector2(195.75, 191.25)
+size = Vector2(226.9375, 193)
 
 [node name="Node2D" type="Node2D" unique_id=1247605548]
 
@@ -99,19 +100,24 @@ position = Vector2(139, 295)
 shape = SubResource("RectangleShape2D_q6r6c")
 debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
 
-[node name="DropOfArea" type="Area2D" parent="." unique_id=286335305 groups=["DropOff"]]
+[node name="DropOfNode" type="Node2D" parent="." unique_id=223121244]
 
-[node name="DropZone" type="CollisionShape2D" parent="DropOfArea" unique_id=2070262410]
-position = Vector2(763, 319)
+[node name="DropOfArea" type="Area2D" parent="DropOfNode" unique_id=286335305 groups=["DropOff"]]
+script = ExtResource("6_kdubu")
+
+[node name="DropZone" type="CollisionShape2D" parent="DropOfNode/DropOfArea" unique_id=2070262410]
+process_physics_priority = 1
+position = Vector2(791, 323)
 shape = SubResource("RectangleShape2D_cpkm1")
 
-[node name="Sprite2D" type="Sprite2D" parent="DropOfArea/DropZone" unique_id=1900155642]
+[node name="Sprite2D" type="Sprite2D" parent="DropOfNode/DropOfArea/DropZone" unique_id=1900155642]
 modulate = Color(0.32275242, 0.72831035, 0.34368736, 1)
 z_index = -1
-position = Vector2(3.874986, 0.6250019)
+position = Vector2(-1.5312643, -3.5)
 scale = Vector2(1.5312498, 1.4296875)
 texture = ExtResource("1_wtcfe")
 
 [connection signal="body_entered" from="character/Area2D" to="character" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="character/Area2D" to="character" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="DropOfArea" to="moveable cube" method="_on_drop_of_area_body_entered"]
+[connection signal="body_entered" from="DropOfNode/DropOfArea" to="moveable circle" method="_on_drop_of_area_body_entered"]
+[connection signal="body_exited" from="DropOfNode/DropOfArea" to="moveable cube" method="_on_drop_of_area_body_exited"]
