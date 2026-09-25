@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dh5nkon41obrg" path="res://drop_of_area.gd" id="6_kdubu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
-size = Vector2(2263, 381)
+size = Vector2(3377, 381)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(180, 139.5)
@@ -25,7 +25,7 @@ size = Vector2(66, 88.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkm1"]
 size = Vector2(226.9375, 193)
 
-[node name="Node2D" type="Node2D" unique_id=1247605548]
+[node name="first level" type="Node2D" unique_id=1247605548]
 
 [node name="platform" type="RigidBody2D" parent="." unique_id=1345009822]
 disable_mode = 1
@@ -35,12 +35,12 @@ gravity_scale = 0.0
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform" unique_id=283777568]
-position = Vector2(540.5, 621.5)
+position = Vector2(-16.5, 621.5)
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Icon" type="Sprite2D" parent="platform" unique_id=328239255]
-position = Vector2(542.5, 624)
-scale = Vector2(17.570313, 2.8125)
+position = Vector2(-8.500061, 624)
+scale = Vector2(26.179686, 2.8125)
 texture = ExtResource("1_wtcfe")
 
 [node name="moveable cube" type="RigidBody2D" parent="." unique_id=670896667 groups=["Rigidbody"]]
@@ -53,8 +53,8 @@ script = ExtResource("1_0e48y")
 position = Vector2(551, 120.75)
 shape = SubResource("RectangleShape2D_wtcfe")
 
-[node name="Icon" type="Sprite2D" parent="moveable cube/CollisionShape2D" unique_id=307412971]
-position = Vector2(-0.9999954, 1.4305115e-06)
+[node name="Icon" type="Sprite2D" parent="moveable cube" unique_id=307412971]
+position = Vector2(550, 120.75)
 scale = Vector2(1.3750001, 1.125)
 texture = ExtResource("1_wtcfe")
 
@@ -76,11 +76,11 @@ scale = Vector2(4.049999, 3.9214582)
 texture = ExtResource("3_q6r6c")
 
 [node name="character" type="CharacterBody2D" parent="." unique_id=526875705]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 3
 script = ExtResource("3_epypp")
 
 [node name="Camera2D" type="Camera2D" parent="character" unique_id=884354656]
+zoom = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="character" unique_id=402185181]
 position = Vector2(2, -5.5)
@@ -105,7 +105,9 @@ debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
 
 [node name="DropOfNode" type="Node2D" parent="." unique_id=223121244]
 
-[node name="DropOfArea" type="Area2D" parent="DropOfNode" unique_id=286335305 groups=["DropOff"]]
+[node name="DropOfArea" type="Area2D" parent="DropOfNode" unique_id=286335305 groups=["DropOff", "Rigidbody"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("6_kdubu")
 
 [node name="DropZone" type="CollisionShape2D" parent="DropOfNode/DropOfArea" unique_id=2070262410]
