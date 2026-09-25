@@ -4,7 +4,7 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Sprite.modulate = Color.RED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -14,9 +14,11 @@ func _process(delta: float) -> void:
 
 func _on_drop_of_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Rigidbody"): 
-		print ("enterd")
+		Sprite.modulate = Color.BLUE
+		print("entered")
 
 
 func _on_drop_of_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Rigidbody"):
+		Sprite.modulate = Color.GREEN
 		print ("left")

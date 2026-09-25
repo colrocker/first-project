@@ -3,9 +3,14 @@
 [ext_resource type="Script" uid="uid://dwnm1wjyj7qdd" path="res://rigid_body_2d.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://blqjdvmtnj2io" path="res://icon.svg" id="1_wtcfe"]
 [ext_resource type="Script" uid="uid://dxjijxdhib7s7" path="res://character_body_2d.gd" id="3_epypp"]
-[ext_resource type="Texture2D" uid="uid://bkge8fx1elk32" path="res://ball.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dtnes4m00sp7" path="res://simple cube.png" id="4_0hol4"]
 [ext_resource type="Script" uid="uid://dh5nkon41obrg" path="res://drop_of_area.gd" id="6_kdubu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(133, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(108, 129)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(3377, 381)
@@ -13,21 +18,51 @@ size = Vector2(3377, 381)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(180, 139.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kdubu"]
-radius = 52.000603
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(125, 117)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
-size = Vector2(66, 88.75)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkm1"]
 size = Vector2(226.9375, 193)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51bqv"]
+size = Vector2(215, 168.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfbix"]
+size = Vector2(33.75, 105)
+
 [node name="first level" type="Node2D" unique_id=1247605548]
+position = Vector2(-1, 7)
+
+[node name="character" type="CharacterBody2D" parent="." unique_id=526875705]
+position = Vector2(70, -283)
+collision_layer = 3
+script = ExtResource("3_epypp")
+
+[node name="Camera2D" type="Camera2D" parent="character" unique_id=884354656]
+position = Vector2(-5, 7)
+zoom = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="character" unique_id=402185181]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Sprite2D" type="Sprite2D" parent="character" unique_id=1649166033]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(-1, -1)
+scale = Vector2(4.0625, 3.9062502)
+texture = ExtResource("4_0hol4")
+
+[node name="Area2D" type="Area2D" parent="character" unique_id=511396622]
+position = Vector2(-2, -1)
+collision_layer = 3
+collision_mask = 3
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="character/Area2D" unique_id=288092052]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_q6r6c")
+debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
 
 [node name="platform" type="RigidBody2D" parent="." unique_id=1345009822]
+position = Vector2(24, 616)
 disable_mode = 1
 collision_layer = 3
 collision_mask = 3
@@ -35,84 +70,42 @@ gravity_scale = 0.0
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform" unique_id=283777568]
-position = Vector2(-16.5, 621.5)
+position = Vector2(1.9998779, 6.5)
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Icon" type="Sprite2D" parent="platform" unique_id=328239255]
-position = Vector2(-8.500061, 624)
+position = Vector2(25.499878, 12)
 scale = Vector2(26.179686, 2.8125)
 texture = ExtResource("1_wtcfe")
 
 [node name="moveable cube" type="RigidBody2D" parent="." unique_id=670896667 groups=["Rigidbody"]]
+position = Vector2(397, 58)
 collision_layer = 2
 collision_mask = 2
 mass = 0.001
 script = ExtResource("1_0e48y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="moveable cube" unique_id=21602498]
-position = Vector2(551, 120.75)
+position = Vector2(4, 3.75)
 shape = SubResource("RectangleShape2D_wtcfe")
 
 [node name="Icon" type="Sprite2D" parent="moveable cube" unique_id=307412971]
-position = Vector2(550, 120.75)
+position = Vector2(3, -1)
 scale = Vector2(1.3750001, 1.125)
 texture = ExtResource("1_wtcfe")
 
-[node name="moveable circle" type="RigidBody2D" parent="." unique_id=742478221 groups=["Rigidbody"]]
-position = Vector2(-194, -4)
-collision_layer = 2
-collision_mask = 2
-mass = 0.001
-inertia = 10.26
-script = ExtResource("1_0e48y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="moveable circle" unique_id=1580158496]
-position = Vector2(1467, 318)
-shape = SubResource("CircleShape2D_kdubu")
-
-[node name="Icon" type="Sprite2D" parent="moveable circle/CollisionShape2D" unique_id=1390891261]
-position = Vector2(1.0000076, -0.75)
-scale = Vector2(4.049999, 3.9214582)
-texture = ExtResource("3_q6r6c")
-
-[node name="character" type="CharacterBody2D" parent="." unique_id=526875705]
-collision_layer = 3
-script = ExtResource("3_epypp")
-
-[node name="Camera2D" type="Camera2D" parent="character" unique_id=884354656]
-zoom = Vector2(0.5, 0.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="character" unique_id=402185181]
-position = Vector2(2, -5.5)
-shape = SubResource("RectangleShape2D_0hol4")
-
-[node name="Sprite2D" type="Sprite2D" parent="character" unique_id=1649166033]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(1, -3.5)
-scale = Vector2(4.0625, 3.9062502)
-texture = ExtResource("4_0hol4")
-
-[node name="Area2D" type="Area2D" parent="character" unique_id=511396622]
-collision_layer = 3
-collision_mask = 3
-input_pickable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="character/Area2D" unique_id=288092052]
-position = Vector2(-1, 16.5)
-shape = SubResource("RectangleShape2D_q6r6c")
-debug_color = Color(0, 0.6365875, 0.40696517, 0.41960785)
-
 [node name="DropOfNode" type="Node2D" parent="." unique_id=223121244]
+position = Vector2(869, 322)
 
 [node name="DropOfArea" type="Area2D" parent="DropOfNode" unique_id=286335305 groups=["DropOff", "Rigidbody"]]
+position = Vector2(3, 5)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_kdubu")
 
 [node name="DropZone" type="CollisionShape2D" parent="DropOfNode/DropOfArea" unique_id=2070262410]
 process_physics_priority = 1
-position = Vector2(791, 323)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_cpkm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="DropOfNode/DropOfArea/DropZone" unique_id=1900155642]
@@ -122,7 +115,31 @@ position = Vector2(-1.5312643, -3.5)
 scale = Vector2(1.5312498, 1.4296875)
 texture = ExtResource("1_wtcfe")
 
+[node name="articulated body" type="Area2D" parent="." unique_id=65855326]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="articulated body" unique_id=20081586]
+position = Vector2(-716, -91)
+
+[node name="Bone 2D left" type="Bone2D" parent="articulated body/Skeleton2D" unique_id=807224010]
+position = Vector2(-163, 178)
+rotation = 1.5707964
+scale = Vector2(6.484114, -879074.06)
+
+[node name="head" type="CollisionShape2D" parent="articulated body/Skeleton2D" unique_id=1733249082]
+position = Vector2(-79, 92)
+shape = SubResource("RectangleShape2D_51bqv")
+
+[node name="left leg" type="Area2D" parent="articulated body/Skeleton2D" unique_id=1317342467]
+position = Vector2(-162.875, 231)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="articulated body/Skeleton2D/left leg" unique_id=2107304410]
+shape = SubResource("RectangleShape2D_hfbix")
+
+[node name="Sprite2D" type="Sprite2D" parent="articulated body/Skeleton2D/left leg/CollisionShape2D2" unique_id=1981045969]
+scale = Vector2(0.19999999, 0.76)
+texture = ExtResource("1_wtcfe")
+
 [connection signal="body_entered" from="character/Area2D" to="character" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="character/Area2D" to="character" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="DropOfNode/DropOfArea" to="moveable circle" method="_on_drop_of_area_body_entered"]
+[connection signal="body_entered" from="DropOfNode/DropOfArea" to="moveable cube" method="_on_drop_of_area_body_entered"]
 [connection signal="body_exited" from="DropOfNode/DropOfArea" to="moveable cube" method="_on_drop_of_area_body_exited"]
